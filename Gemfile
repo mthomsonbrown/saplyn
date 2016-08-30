@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "slim-rails"
 gem 'bootstrap-sass', '3.3.6'
 gem 'devise'
+gem 'ckeditor'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'

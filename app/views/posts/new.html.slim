@@ -1,0 +1,13 @@
+= javascript_include_tag Ckeditor.cdn_url
+
+center
+    h1 New post
+
+= form_for @post do |p|
+        = p.label "derp"
+        br
+        = p.cktext_area :content, :class => "content"
+        br
+        = p.submit
+
+= link_to 'Back', posts_path

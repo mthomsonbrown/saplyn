@@ -1,3 +1,5 @@
 center
   h1 User Space!
   h2 Welcome to User Space, #{@user.email}
+  
+  = button_to 'Add Post', new_post_url, :method => "get"
