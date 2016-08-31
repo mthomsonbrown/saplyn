@@ -2,12 +2,13 @@
 
 center
     h1 New post
+    .container
+        = bootstrap_form_for @post do |p|
+                = p.text_area :title, :placeholder => "This is where you would put your title...", hide_label: true
+                br
+                = p.cktext_area :content, :class => "content"
+                br
+                = p.submit
 
-= form_for @post do |p|
-        = p.label "derp"
-        br
-        = p.cktext_area :content, :class => "content"
-        br
-        = p.submit
-
-= link_to 'Back', posts_path
+//Kinda thinking I don't need this...
+//= link_to 'Back', posts_path
