@@ -1,32 +1,41 @@
-h1 Listing posts
 center
-  .card
-    img.card-img-top alt=("Card image cap") src="assets/placeholder.jpg"
-    .card-block
-      h4.card-title Card title
-      p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-      a.btn.btn-primary href="#"  Go somewhere
+  h1 Listing posts
+  .card-deck-wrapper
+    .card-deck
+      - @posts.each do |post|
+        .card
+          img.card-img-top alt=("Card image cap") src="assets/placeholder.jpg"
+          .card-block
+            h4.card-title = post.title
+            p.card-text = post.content
+            a.btn.btn-primary href="#"  Go somewhere
+  = link_to 'New Post', new_post_path, class: "btn btn-secondary"
+  
+  
+  
+// Saving this because I can use the routing as an example.  It would be pretty
+// easy to figure out, but it's here, why not keep it for the nonce
+//
+// table
+//   thead
+//     tr
+//       th Title
+//       th Content
+//       th User
+//       th
+//       th
+//       th
 
-table
-  thead
-    tr
-      th Title
-      th Content
-      th User
-      th
-      th
-      th
+//   tbody
+//     - @posts.each do |post|
+//       tr
+//         td = post.title
+//         td = post.content
+//         td = post.user
+//         td = link_to 'Show', post
+//         td = link_to 'Edit', edit_post_path(post)
+//         td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
 
-  tbody
-    - @posts.each do |post|
-      tr
-        td = post.title
-        td = post.content
-        td = post.user
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
+// br
 
-br
-
-= link_to 'New Post', new_post_path
+  
