@@ -15,7 +15,6 @@ gem 'bootstrap-sass', '3.3.6'
 gem 'bootstrap_form'
 gem 'devise'
 gem 'ckeditor'
-gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
@@ -32,6 +31,7 @@ end
   
 group :production do
   gem 'pg', '0.18.4'
+  gem 'rails_12factor', '0.0.2'
 end
 
 
