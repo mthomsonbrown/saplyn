@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = current_user.get_all_posts
   end
 
   # GET /posts/1
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = current_user.new_post
   end
 
   # GET /posts/1/edit
@@ -24,8 +24,10 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
-
+    # @post = Post.new(post_params)
+    @post = current_user.new_post_with_params post_params
+    @post.user_id = current_user.id
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

@@ -9,7 +9,7 @@ CKEDITOR.editorConfig = function (config) {
   buttonsToRemove += ',Anchor,ShowBlocks'
   
   
-  // config.removeButtons = buttonsToRemove;
+  config.removeButtons = buttonsToRemove;
 
   config.toolbar_mini = [
     ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  

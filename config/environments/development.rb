@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # Whitelisting for console logging
+  config.web_console.whiny_requests = false
 end
