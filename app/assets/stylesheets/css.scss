@@ -9,3 +9,10 @@ body {
     width: 300px;
     text-align: middle;
 }
+
+.card-text {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
