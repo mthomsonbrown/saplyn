@@ -3,3 +3,5 @@ center
   h2 Welcome to User Space, #{@user.email}
   
   = button_to 'Add Post', new_post_url, :method => "get"
+  
+  = render "posts/view"
