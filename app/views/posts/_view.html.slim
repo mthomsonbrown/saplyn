@@ -1,0 +1,9 @@
+  .card-deck-wrapper
+    .card-deck
+      - @posts.each do |post|
+        .card
+          img.card-img-top alt=("Card image cap") src="assets/placeholder.jpg"
+          .card-block
+            h4.card-title = post.title.html_safe
+            p.card-text = strip_tags post.content
+            .btn.btn-primary = link_to "Edit", :controller => "posts", :action => "update", :id => post
