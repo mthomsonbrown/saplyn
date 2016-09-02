@@ -6,8 +6,8 @@ center
         .card
           img.card-img-top alt=("Card image cap") src="assets/placeholder.jpg"
           .card-block
-            h4.card-title = post.title
-            p.card-text = post.content
+            h4.card-title = post.title.html_safe
+            p.card-text = post.content.html_safe
             a.btn.btn-primary href="#"  Go somewhere
   = link_to 'New Post', new_post_path, class: "btn btn-secondary"
   
