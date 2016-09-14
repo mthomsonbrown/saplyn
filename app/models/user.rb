@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
+  before_create -> { self.auth_token = SecureRandom.hex }
+  
   def get_all_posts
     self.posts.all
   end
