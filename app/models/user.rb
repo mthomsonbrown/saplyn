@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def new_post_with_params parameters
     @post = self.posts.new parameters
   end
+  
+  def get_user
+    @user = self
+  end
 end

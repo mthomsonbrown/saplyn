@@ -14,10 +14,8 @@ class Api::V1::UsersController < ApplicationController
   end
   
   def index 
-      render json: { thingy: "Got to index!" }
+      render :json => current_user.get_user
   end
-  
-  
   
   def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, 
