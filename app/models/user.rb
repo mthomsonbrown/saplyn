@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   end
   
   def get_user
-    @user = self
+    @user = self.username
   end
 end

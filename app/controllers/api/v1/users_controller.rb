@@ -10,11 +10,16 @@ class Api::V1::UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.create! user_params
-    render json: { data: { auth_token: @user.auth_token }}
+    render json: { data: { auth_token: @user.auth_token, user_id: @user.id }}
   end
   
   def index 
-      render :json => current_user.get_user
+    render json: { username: current_user.username }
+  end
+  
+  def update
+    current_user.update user_params
+    render json: { username: current_user.username }
   end
   
   def user_params

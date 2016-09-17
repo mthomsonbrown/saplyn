@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @user = current_user
+    @user = current_user.get_user
     @posts = current_user.get_all_posts
   end
 
