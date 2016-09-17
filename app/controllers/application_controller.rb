@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!, :if => :format_html?
   before_filter :authenticate_user_from_token, :unless => :format_html?
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  # I'm not sure what this does, but it fixed the JSON requests...at some point.  
+  # Now it looks like I can do whatever I want with this gone.  I'll leave it for now, until I get
+  # to adding some tests, and will see if it's important then.
+  # before_filter :configure_permitted_parameters, if: :devise_controller?, :unless => :format_html?
+  
   
   def format_html?
     request.format.html?
