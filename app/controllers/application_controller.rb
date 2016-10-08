@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # I'm not sure what this does, but it fixed the JSON requests...at some point.  
   # Now it looks like I can do whatever I want with this gone.  I'll leave it for now, until I get
   # to adding some tests, and will see if it's important then.
-  # before_filter :configure_permitted_parameters, if: :devise_controller?, :unless => :format_html?
+  before_filter :configure_permitted_parameters, if: :devise_controller?, :unless => :format_html?
   
   
   def format_html?
@@ -15,10 +15,11 @@ class ApplicationController < ActionController::Base
   end
   
   def authenticate_user_from_token
-    unless authenticate_with_http_token do |token, options|
-      @current_user = User.find_by(auth_token: token)
-    return @current_user
-  end
+    unless authenticate_with_http_token do |token|
+      if @current_user = User.find_by(auth_token: token)
+        return @current_user
+      end
+    end
       render json: { error: 'Bad Token'}, status: 401
     end
   end
