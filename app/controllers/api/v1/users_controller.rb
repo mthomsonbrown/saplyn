@@ -9,27 +9,41 @@ class Api::V1::UsersController < ApplicationController
   
   # POST /users.json
   def create
-    user = User.create! user_params
-    render :json =>  {user: user}
+    if User.find_by(email: user_params[:email])
+      render :json => {error: 'Email address already registered'}, status: 422
+      return
+    end
+    user = User.create user_params
+    if user.valid?
+      render :json =>  {user: user}
+    else
+      render json: {error: 'Oops!  Lazy error handling on the rails side :/'}, status: 422
+    end
   end
   
   def sign_in
     user = User.find_by(email: user_params[:email])
     if user && user.valid_password?(user_params[:password])
       render :json => {user: user}
-    else
+    else  
       render json: {error: 'Incorrect credentials'}, status: 401
     end
   end
   
   def index 
-    render :json => current_user
+    render :json => {user: current_user}
   end
   
   def update
     current_user.update user_params
     render :json => current_user
   end
+  
+  def destroy
+    User.find(current_user.id).destroy
+    render :json => {status: 'Deregistered!'}, status: 200
+  end
+  
   
   def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, 
