@@ -10,7 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #ME ALL ME!!!
-gem "slim-rails"
+gem "slim-rails", '3.1.1'
 gem 'bootstrap-sass', '3.3.6'
 gem 'bootstrap_form'
 gem 'devise'
@@ -29,10 +29,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-  
+
 group :production do
   gem 'pg', '0.18.4'
   gem 'rails_12factor', '0.0.2'
 end
-
-
